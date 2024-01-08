@@ -7,7 +7,7 @@ const CheckAssociateService = require("../../services/common/CheckAssociateServi
 const PurchasesModel = require("../../models/Purchases/PurchasesModel");
 const DeleteService = require("../../services/common/DeleteService");
 const DetailsByIDService = require("../../services/common/DetailsByIDService");
-
+const mongoose = require("mongoose");
 
 
 
@@ -44,7 +44,7 @@ exports.SuppliersDropDown=async (req, res) => {
 exports.DeleteSupplier=async (req, res) => {
     let DeleteID=req.params.id;
     const ObjectId = mongoose.Types.ObjectId;
-    let CheckAssociate= await CheckAssociateService({SupplierID:ObjectId(DeleteID)},PurchasesModel);
+    let CheckAssociate= await CheckAssociateService({SupplierID:new ObjectId(DeleteID)},PurchasesModel);
     if(CheckAssociate){
         res.status(200).json({status: "associate", data: "Associate with Purchases"})
     }

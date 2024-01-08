@@ -43,7 +43,7 @@ exports.ExpenseTypesDetailsByID=async (req, res) => {
 exports.DeleteExpenseTypes=async (req, res) => {
     let DeleteID=req.params.id;
     const ObjectId = mongoose.Types.ObjectId;
-    let CheckAssociate= await CheckAssociateService({TypeID:ObjectId(DeleteID)},ExpensesModel);
+    let CheckAssociate= await CheckAssociateService({TypeID:new ObjectId(DeleteID)},ExpensesModel);
     if(CheckAssociate){
         res.status(200).json({status: "associate", data: "Associate with Expenses"})
     }

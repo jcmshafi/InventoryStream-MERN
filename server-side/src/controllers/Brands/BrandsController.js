@@ -38,7 +38,7 @@ exports.DeleteBrand=async (req, res) => {
     const ObjectId = mongoose.Types.ObjectId;
 
     //!Delete brand and check association in Product (check brand id product model a ache kina)
-    let CheckAssociate= await CheckAssociateService({BrandID:ObjectId(DeleteID)},ProductsModel);
+    let CheckAssociate= await CheckAssociateService({BrandID:new ObjectId(DeleteID)},ProductsModel);
     if(CheckAssociate){
         res.status(200).json({status: "associate", data: "Associate with Product"})
     }

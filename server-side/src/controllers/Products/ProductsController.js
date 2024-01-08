@@ -9,6 +9,8 @@ const PurchaseProductsModel = require("../../models/Purchases/PurchaseProductsMo
 const ReturnProductsModel = require("../../models/Returns/ReturnProductsModel");
 const DeleteService = require("../../services/common/DeleteService");
 const DetailsByIDService = require("../../services/common/DetailsByIDService");
+const DropDownService = require("../../services/common/DropDownService");
+
 
 exports.CreateProducts=async (req, res) => {
     let Result= await CreateService(req,DataModel);
@@ -37,9 +39,9 @@ exports.DeleteProduct=async (req, res) => {
     const ObjectId = mongoose.Types.ObjectId;
 
     //! DeleteProduct: Check association with Returns, Purchases and Sales using ProductID
-    let CheckReturnAssociate= await CheckAssociateService({ProductID:ObjectId(DeleteID)},ReturnProductsModel);
-    let CheckPurchaseAssociate= await CheckAssociateService({ProductID:ObjectId(DeleteID)},PurchaseProductsModel);
-    let CheckSaleAssociate= await CheckAssociateService({ProductID:ObjectId(DeleteID)},SaleProductsModel);
+    let CheckReturnAssociate= await CheckAssociateService({ProductID:new ObjectId(DeleteID)},ReturnProductsModel);
+    let CheckPurchaseAssociate= await CheckAssociateService({ProductID:new ObjectId(DeleteID)},PurchaseProductsModel);
+    let CheckSaleAssociate= await CheckAssociateService({ProductID:new ObjectId(DeleteID)},SaleProductsModel);
 
     if(CheckReturnAssociate){
         res.status(200).json({status: "associate", data: "Associate with Return"})
@@ -58,5 +60,9 @@ exports.DeleteProduct=async (req, res) => {
 
 exports.ProductsDetailsByID=async (req, res) => {
     let Result= await DetailsByIDService(req,DataModel)
+    res.status(200).json(Result)
+}
+exports.ProductsDropDown=async (req, res) => {
+    let Result= await DropDownService(req,DataModel,{_id:1,Name:1})
     res.status(200).json(Result)
 }

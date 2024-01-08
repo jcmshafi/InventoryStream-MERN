@@ -45,7 +45,7 @@ exports.DeleteCustomer=async (req, res) => {
     const ObjectId = mongoose.Types.ObjectId;
     
     //!DeleteCustomer: check association with Sales using customer ID
-    let CheckAssociate= await CheckAssociateService({CustomerID:ObjectId(DeleteID)},SalesModel);
+    let CheckAssociate= await CheckAssociateService({CustomerID:new ObjectId(DeleteID)},SalesModel);
     if(CheckAssociate){
         res.status(200).json({status: "associate", data: "Associate with Sales"})
     }
