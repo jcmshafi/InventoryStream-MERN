@@ -29,8 +29,8 @@ const CreatePassword = () => {
     }
 
     return (
-            <div className="container">
-                <div className="row justify-content-center">
+            <div className="container vh-100 d-flex align-items-center">
+                <div className="row justify-content-center w-100">
                     <div className="col-md-7 text-start col-lg-6 center-screen">
                         <div className="card w-90 p-4">
                             <div className="card-body">

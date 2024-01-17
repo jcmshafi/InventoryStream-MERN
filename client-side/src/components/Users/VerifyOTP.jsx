@@ -39,8 +39,8 @@ const VerifyOTP = () => {
 
     return (
 
-            <div className="container">
-                <div className="row d-flex justify-content-center">
+            <div className="container vh-100 d-flex align-items-center">
+                <div className="row d-flex justify-content-center w-100">
                     <div className="col-md-7 col-lg-6 center-screen">
                         <div className="card w-90">
                             <div className="card-body">

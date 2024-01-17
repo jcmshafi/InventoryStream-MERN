@@ -34,8 +34,8 @@ const Registration = () => {
     }
 
     return (
-        <div className="container">
-            <div className="row d-flex justify-content-center">
+        <div className="container vh-100 d-flex align-items-center">
+            <div className="row d-flex justify-content-center w-100">
                 <div className="col-md-10 col-lg-10 center-screen">
                     <div className="card w-100">
                         <div className="card-body">
